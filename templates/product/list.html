@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div data-bs-parallax-bg="true"
+         style="height:500px;background-image:url(https://unsplash.it/1800/900?image=1051);background-position:center;background-size:cover;"></div>
+
+    <div class="article-list">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Latest Articles</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh
+                    erat, pellentesque ut laoreet vitae. </p>
+            </div>
+            <div class="row articles">
+                {% for product in product_list %}
+                    <div class="col-sm-6 col-md-4 item"><a href="{{ product.get_absolute_url }}">
+                        <img class="img-fluid" src="{{ product.image }}"></a>
+                        <h3 class="name">{{ product.name }}</h3>
+                        <p class="description">{{ product.description | truncatewords:30 }}</p>
+                        <div class="btn-group shadow" role="group" style="padding-top: 5px;">
+                            <button class="btn btn-warning" type="button">Add to Cart</button>
+                        </div>
+                        <a class="action" href="#"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
